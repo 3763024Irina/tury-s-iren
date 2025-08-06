@@ -12,6 +12,9 @@
       --main-yellow: #ffc700;
       --border-gray: #dadada;
       --gray-bg: #f2f2f2;
+      --vk-blue: #2787F5;
+      --ok-orange: #ff9800;
+      --ok-orange-hover: #ffad32;
     }
     body {
       margin: 0;
@@ -231,6 +234,44 @@
     .program-card-btn:hover {
       background: var(--main-blue-hover);
     }
+
+    /* ==== Соцсети ===== */
+    .footer-socials {
+      margin: 24px 0 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+    }
+    .social-btn {
+      border: none;
+      padding: 0 25px;
+      height: 42px;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background 0.18s, box-shadow 0.15s;
+      box-shadow: 0 2px 8px rgba(0,40,100,0.09);
+      outline: none;
+      text-decoration: none;
+    }
+    .social-btn.ok {
+      background: var(--ok-orange);
+    }
+    .social-btn.ok:hover {
+      background: var(--ok-orange-hover);
+    }
+    .social-btn.vk {
+      background: var(--vk-blue);
+    }
+    .social-btn.vk:hover {
+      background: #1769aa;
+    }
+
     footer {
       background: #f5f5f5;
       color: #6a6a6a;
@@ -252,6 +293,8 @@
       .search-btn { border-radius: 0 0 12px 12px; margin: 0; }
       .program-list { flex-direction: column; gap: 18px; }
       .program-card { max-width: 100%; min-width: unset; }
+      .footer-socials { flex-direction: column; gap: 14px; }
+      .social-btn { justify-content: center; }
     }
   </style>
 </head>
@@ -298,7 +341,7 @@
 
   <section class="programs-section">
     <div class="programs-title">Спецпредложения туров</div>
-    <div class="program-list">  
+    <div class="program-list">
       <div class="program-card">
         <div class="program-card-title">Тур по Лангедоку</div>
         <div class="program-card-desc">3 дня среди виноградников, дегустации, прогулки и уютные вечера. Старт — Монпелье, проживание в замке.</div>
@@ -317,8 +360,19 @@
     </div>
   </section>
   <footer>
-    &copy; 2025 TravelBooking. Все права защищены. <br>
-    <span style="color:#003b95">Email: info@travelbooking.ru</span>  
+    <div class="footer-socials">
+      <a class="social-btn ok" href="#" target="_blank" title="Одноклассники">
+        <span style="font-size:1.3em;">🟧</span>
+        Одноклассники
+      </a>
+      <a class="social-btn vk" href="#" target="_blank" title="ВКонтакте">
+        <span style="font-size:1.3em;">🟦</span>
+        ВКонтакте
+      </a>
+    </div>
+    &copy; 2025 TravelBooking. Все права защищены.<br>
+    <span style="color:#003b95">Email: info@travelbooking.ru</span>
   </footer>
 </body>
 </html>
+  
