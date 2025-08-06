@@ -3,296 +3,322 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Авторские путешествия</title>
-  <link href="https://fonts.googleapis.com/css?family=Caveat:700&display=swap" rel="stylesheet">
+  <title>Путешествия | Ваш сервис бронирования туров</title>
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #FAF5EF;
-      --card: #EEC7B4;
-      --green: #6C9286;
-      --text: #3E2C41;
-      --accent: #EAF0CE;
-      --shadow: 0 4px 16px 0 rgba(60,45,29,0.07);
+      --main-blue: #003b95;
+      --main-blue-hover: #0254d8;
+      --main-yellow: #ffc700;
+      --border-gray: #dadada;
+      --gray-bg: #f2f2f2;
     }
     body {
       margin: 0;
       font-family: 'Nunito', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
+      background: #fff;
+      color: #222;
     }
     header {
-      background: var(--card);
-      padding: 32px 0 24px 0;
-      text-align: center;
-      box-shadow: var(--shadow);
+      background: var(--main-blue);
+      color: #fff;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .header-content {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      height: 66px;
+    }
+    .logo {
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.13);
+    }
+    .header-btns {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn {
+      background: #fff;
+      color: var(--main-blue);
+      border: none;
+      font-weight: 700;
+      padding: 7px 20px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.14s, color 0.14s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .btn.primary {
+      background: var(--main-blue);
+      color: #fff;
+      border: 2px solid #fff;
+    }
+    .btn.primary:hover {
+      background: var(--main-blue-hover);
+    }
+    .btn:hover {
+      background: var(--main-yellow);
+      color: #222;
+    }
+
+    .main-banner {
+      background: var(--gray-bg);
+      min-height: 370px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner-content {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      padding: 40px 18px 24px 18px;
+      width: 100%;
+    }
+    .banner-text {
+      flex: 1.2;
     }
     .banner-title {
-      font-family: 'Caveat', cursive;
       font-size: 2.8rem;
-      margin: 0 0 12px 0;
-      letter-spacing: 2px;
+      font-weight: 800;
+      color: var(--main-blue);
+      margin-bottom: 14px;
+      line-height: 1.1;
     }
-    .banner-sub {
-      font-size: 1.2rem;
-      color: var(--green);
-      margin-bottom: 8px;
-      font-style: italic;
+    .banner-desc {
+      font-size: 1.25rem;
+      margin-bottom: 32px;
+      color: #363636;
     }
-    nav {
-      margin-top: 14px;
-    }
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 700;
-      margin: 0 18px;
-      padding: 4px 10px;
-      border-radius: 8px;
-      transition: background 0.2s;
-    }
-    nav a:hover {
-      background: var(--accent);
-    }
-
-    main {
-      max-width: 950px;
-      margin: 32px auto;
-      padding: 0 10px;
-    }
-
-    .tours-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      margin-bottom: 36px;
-      justify-content: center;
-    }
-
-    .tour-card {
-      background: var(--card);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      width: 315px;
-      padding: 0 0 18px 0;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .tour-card:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 10px 32px 0 rgba(60,45,29,0.12);
-    }
-    .tour-img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      border-radius: 22px 22px 0 0;
-    }
-    .tour-info {
-      padding: 18px 20px 0 20px;
+    .banner-img {
       flex: 1;
+      max-width: 380px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,40,100,0.11);
+    }
+
+    .search-form {
       display: flex;
-      flex-direction: column;
+      gap: 0;
+      margin-top: -40px;
+      background: #fff;
+      border: 2px solid var(--main-yellow);
+      border-radius: 14px;
+      box-shadow: 0 6px 30px rgba(0,40,100,0.09);
+      max-width: 940px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 2;
     }
-    .tour-title {
-      font-family: 'Caveat', cursive;
-      font-size: 1.7rem;
-      color: var(--green);
-      margin: 0 0 10px 0;
-      line-height: 1.2;
-    }
-    .tour-desc {
-      flex: 1;
+    .search-field {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 14px 20px;
       font-size: 1.1rem;
-      margin-bottom: 12px;
+      border: none;
+      background: none;
+      outline: none;
+      flex: 1;
     }
-    .tour-btn {
-      background: var(--green);
+    .search-field + .search-field {
+      border-left: 1px solid var(--border-gray);
+    }
+    .search-btn {
+      background: var(--main-blue);
       color: #fff;
       border: none;
-      padding: 10px 0;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: bold;
+      font-weight: 800;
+      font-size: 1.15rem;
+      padding: 0 34px;
+      border-radius: 0 12px 12px 0;
       cursor: pointer;
-      transition: background 0.18s;
-      box-shadow: 0 2px 6px rgba(60,45,29,0.08);
+      transition: background 0.16s;
     }
-    .tour-btn:hover {
-      background: #517568;
+    .search-btn:hover {
+      background: var(--main-blue-hover);
     }
-
-    .about-block {
-      background: var(--accent);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      padding: 34px 24px 24px 24px;
-      margin-bottom: 40px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 24px;
-    }
-    .about-photo {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 2px 14px rgba(60,45,29,0.11);
-      margin-right: 8px;
-      background: #fff;
-    }
-    .about-info {
-      flex: 1;
-      min-width: 220px;
-    }
-    .about-title {
-      font-family: 'Caveat', cursive;
-      font-size: 1.5rem;
-      margin: 0 0 6px 0;
-      color: var(--green);
-    }
-    .about-desc {
-      font-size: 1.1rem;
-      color: var(--text);
-      line-height: 1.5;
+    .icon {
+      font-size: 1.2em;
+      opacity: 0.7;
     }
 
-    .reviews-block {
-      margin-bottom: 45px;
+    .programs-section {
+      max-width: 1160px;
+      margin: 54px auto 0 auto;
+      padding: 0 18px;
     }
-    .reviews-title {
-      font-family: 'Caveat', cursive;
-      font-size: 1.35rem;
-      color: var(--green);
-      margin-bottom: 16px;
-      text-align: left;
+    .programs-title {
+      font-size: 2.1rem;
+      color: var(--main-blue);
+      font-weight: 800;
+      margin-bottom: 26px;
     }
-    .review-list {
+    .program-list {
       display: flex;
-      gap: 18px;
+      gap: 32px;
       flex-wrap: wrap;
     }
-    .review-card {
-      background: var(--card);
+    .program-card {
+      background: var(--gray-bg);
       border-radius: 16px;
-      box-shadow: var(--shadow);
-      padding: 16px 18px;
-      font-size: 1rem;
-      max-width: 260px;
-      min-width: 200px;
+      box-shadow: 0 2px 14px rgba(0,40,100,0.07);
+      padding: 22px 18px 18px 18px;
+      max-width: 310px;
+      min-width: 220px;
+      flex: 1 1 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .review-author {
-      margin-top: 10px;
-      font-family: 'Caveat', cursive;
-      font-size: 1.05rem;
-      color: var(--green);
-      text-align: right;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 0 18px 0;
-      font-size: 1rem;
-      color: #98847e;
-    }
-    .footer-socials a {
-      display: inline-block;
-      margin: 0 10px;
-      text-decoration: none;
-      color: var(--green);
+    .program-card-title {
       font-size: 1.2rem;
-      transition: color 0.2s;
+      font-weight: 700;
+      color: var(--main-blue);
+      margin-bottom: 7px;
     }
-    .footer-socials a:hover {
-      color: #3E2C41;
+    .program-card-desc {
+      color: #3a3a3a;
+      flex: 1;
+      font-size: 1rem;
     }
-
-    @media (max-width: 700px) {
-      .tours-list { flex-direction: column; align-items: center; }
-      .about-block { flex-direction: column; align-items: flex-start; }
-      .about-photo { margin-bottom: 12px; margin-right: 0; }
-      main { padding: 0 3vw; }
+    .program-card-btn {
+      align-self: flex-end;
+      background: var(--main-blue);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 7px 18px;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .program-card-btn:hover {
+      background: var(--main-blue-hover);
+    }
+    footer {
+      background: #f5f5f5;
+      color: #6a6a6a;
+      padding: 40px 0 20px 0;
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 50px;
+    }
+    @media (max-width: 880px) {
+      .banner-content { flex-direction: column; gap: 18px; }
+      .banner-img { max-width: 90vw; }
+    }
+    @media (max-width: 600px) {
+      .header-content, .banner-content, .programs-section { padding: 0 5vw; }
+      .main-banner { min-height: 260px; }
+      .banner-title { font-size: 2rem; }
+      .search-form { flex-direction: column; margin-top: -18px; }
+      .search-field, .search-btn { width: 100%; border-radius: 0; padding: 12px 14px; }
+      .search-btn { border-radius: 0 0 12px 12px; margin: 0; }
+      .program-list { flex-direction: column; gap: 18px; }
+      .program-card { max-width: 100%; min-width: unset; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="banner-title">Путешествуй со мной!</div>
-    <div class="banner-sub">Авторские туры и настоящие приключения</div>
-    <nav>
-      <a href="#">Главная</a>
-      <a href="#">Программы</a>
-      <a href="#">Обо мне</a>
-      <a href="#">Контакты</a>
-    </nav>
-  </header>
-  <main>
-    <section class="tours-list">
-      <div class="tour-card">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" class="tour-img" alt="Горный поход">
-        <div class="tour-info">
-          <div class="tour-title">Поход в сердце Пиренеев</div>
-          <div class="tour-desc">
-            Пятидневное приключение по самым живописным местам Франции: горные тропы, озёра, пикники и тёплые вечера у костра. 
-            <br>Старт — Тулуза, уровень: любой.
-          </div>
-          <button class="tour-btn">Подробнее</button>
-        </div>
+    <div class="header-content">
+      <div class="logo">TravelBooking</div>
+      <nav class="nav-links">
+        <a href="#">Жильё</a>
+        <a href="#">Туры</a>
+        <a href="#">Авиабилеты</a>
+        <a href="#">Контакты</a>
+      </nav>
+      <div class="header-btns">
+        <button class="btn">Зарегистрироваться</button>
+        <button class="btn primary">Войти</button>
       </div>
-      <div class="tour-card">
-        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=500&q=80" class="tour-img" alt="Винный тур">
-        <div class="tour-info">
-          <div class="tour-title">Винные выходные в Лангедоке</div>
-          <div class="tour-desc">
-            Два дня среди виноградников: дегустации, экскурсии, фермерские обеды, неспешные прогулки и винные секреты региона.
-            <br>Группа до 8 человек.
-          </div>
-          <button class="tour-btn">Подробнее</button>
-        </div>
-      </div>
-    </section>
-    
-    <section class="about-block">
-      <img class="about-photo" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=facearea&w=200&q=80" alt="Гид">
-      <div class="about-info">
-        <div class="about-title">Привет, я Ирина!</div>
-        <div class="about-desc">
-          Путешествую по Франции больше 7 лет, знаю секретные места, уютные деревушки и самые красивые тропы.  
-          <br>Мои туры — это душевные поездки для тех, кто ценит атмосферу, общение и настоящие открытия.  
-          <br>Люблю природу, винные вечера и новые знакомства.  
-        </div>
-      </div>
-    </section>
-    
-    <section class="reviews-block">
-      <div class="reviews-title">Отзывы участников</div>
-      <div class="review-list">
-        <div class="review-card">
-          Это были лучшие выходные за долгое время!  
-          <div class="review-author">— Ольга, Москва</div>
-        </div>
-        <div class="review-card">
-          Волшебная атмосфера и забота о каждом. Обязательно поеду ещё раз!
-          <div class="review-author">— Алексей, Тулуза</div>
-        </div>
-        <div class="review-card">
-          Спасибо за искренность и настоящие эмоции!  
-          <div class="review-author">— Жанна, Париж</div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="footer-socials">
-      <a href="#" title="Telegram">Telegram</a>
-      <a href="#" title="Instagram">Instagram</a>
-      <a href="#" title="WhatsApp">WhatsApp</a>
     </div>
-    <div style="margin-top:10px;">&copy; 2025 Авторские путешествия с Ириной</div>
+  </header>
+  <section class="main-banner">
+    <div class="banner-content">
+      <div class="banner-text">
+        <div class="banner-title">Бронируйте туры и жильё<br>— легко и удобно</div>
+        <div class="banner-desc">Путешествуйте без забот: выбирайте авторские программы, ищите жильё и бронируйте за пару минут.</div>
+      </div>
+      <img class="banner-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" alt="Пляж">
+    </div>
+  </section>
+  <form class="search-form">
+    <div class="search-field">
+      <span class="icon">🏨</span>
+      <input type="text" placeholder="Куда вы хотите поехать?" style="border:none;outline:none;font-size:1.1rem;width:100%">
+    </div>
+    <div class="search-field">
+      <span class="icon">📅</span>
+      <input type="text" placeholder="Дата заезда — дата отъезда" style="border:none;outline:none;font-size:1.1rem;width:100%">
+    </div>
+    <div class="search-field">
+      <span class="icon">👤</span>
+      <input type="text" placeholder="2 взрослых, 0 детей" style="border:none;outline:none;font-size:1.1rem;width:100%">
+    </div>
+    <button class="search-btn" type="submit">Найти</button>
+  </form>
+
+  <section class="programs-section">
+    <div class="programs-title">Спецпредложения туров</div>
+    <div class="program-list">  
+      <div class="program-card">
+        <div class="program-card-title">Тур по Лангедоку</div>
+        <div class="program-card-desc">3 дня среди виноградников, дегустации, прогулки и уютные вечера. Старт — Монпелье, проживание в замке.</div>
+        <button class="program-card-btn">Подробнее</button>
+      </div>
+      <div class="program-card">
+        <div class="program-card-title">Путешествие по Пиренеям</div>
+        <div class="program-card-desc">Горные маршруты, озёра, йога на рассвете и пикники с местными сырами. Все уровни подготовки.</div>
+        <button class="program-card-btn">Подробнее</button>
+      </div>
+      <div class="program-card">
+        <div class="program-card-title">Weekend на море</div>
+        <div class="program-card-desc">2 дня на лучших пляжах Франции, экскурсии и прогулки на яхте. Проживание — апартаменты на берегу.</div>
+        <button class="program-card-btn">Подробнее</button>
+      </div>
+    </div>
+  </section>
+  <footer>
+    &copy; 2025 TravelBooking. Все права защищены. <br>
+    <span style="color:#003b95">Email: info@travelbooking.ru</span>  
   </footer>
 </body>
 </html>
