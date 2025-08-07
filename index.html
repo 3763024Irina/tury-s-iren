@@ -3,376 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Путешествия | Ваш сервис бронирования туров</title>
-  <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+  <title>Туры с Ирен — Лангедок</title>
+  <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
   <style>
-    :root {
-      --main-blue: #003b95;
-      --main-blue-hover: #0254d8;
-      --main-yellow: #ffc700;
-      --border-gray: #dadada;
-      --gray-bg: #f2f2f2;
-      --vk-blue: #2787F5;
-      --ok-orange: #ff9800;
-      --ok-orange-hover: #ffad32;
-    }
     body {
-      margin: 0;
-      font-family: 'Nunito', Arial, sans-serif;
-      background: #fff;
-      color: #222;
+      font-family: 'Spectral', serif;
+      background: #f9f9f9;
+      color: #1e1e1e;
     }
-    header {
-      background: var(--main-blue);
-      color: #fff;
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .header-content {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 18px;
-      height: 66px;
-    }
-    .logo {
-      font-size: 1.65rem;
-      font-weight: 800;
+    nav strong {
+      color: #C9B886;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
       letter-spacing: 1px;
-      color: #fff;
     }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
+    .logo-img {
+      border-radius: 10px;
+      margin-right: 10px;
+      max-height: 50px;
     }
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 6px;
-      transition: background 0.15s;
-    }
-    .nav-links a:hover {
-      background: rgba(255,255,255,0.13);
-    }
-    .header-btns {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    .btn {
-      background: #fff;
-      color: var(--main-blue);
-      border: none;
-      font-weight: 700;
-      padding: 7px 20px;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.14s, color 0.14s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    }
-    .btn.primary {
-      background: var(--main-blue);
-      color: #fff;
-      border: 2px solid #fff;
-    }
-    .btn.primary:hover {
-      background: var(--main-blue-hover);
-    }
-    .btn:hover {
-      background: var(--main-yellow);
-      color: #222;
-    }
-
-    .main-banner {
-      background: var(--gray-bg);
-      min-height: 370px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .banner-content {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      padding: 40px 18px 24px 18px;
-      width: 100%;
-    }
-    .banner-text {
-      flex: 1.2;
-    }
-    .banner-title {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: var(--main-blue);
-      margin-bottom: 14px;
-      line-height: 1.1;
-    }
-    .banner-desc {
-      font-size: 1.25rem;
-      margin-bottom: 32px;
-      color: #363636;
+    h1, h2, .program-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      color: #0D2B1E;
     }
     .banner-img {
-      flex: 1;
-      max-width: 380px;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,40,100,0.11);
+      border-radius: 16px;
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      box-shadow: 0 6px 32px rgba(80,50,10,0.08);
+      margin-bottom: 1.4rem;
     }
-
-    .search-form {
-      display: flex;
-      gap: 0;
-      margin-top: -40px;
-      background: #fff;
-      border: 2px solid var(--main-yellow);
+    .program-card-img {
       border-radius: 14px;
-      box-shadow: 0 6px 30px rgba(0,40,100,0.09);
-      max-width: 940px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      z-index: 2;
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 4px 24px rgba(50,40,20,0.10);
     }
-    .search-field {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      padding: 14px 20px;
-      font-size: 1.1rem;
-      border: none;
-      background: none;
-      outline: none;
-      flex: 1;
-    }
-    .search-field + .search-field {
-      border-left: 1px solid var(--border-gray);
-    }
-    .search-btn {
-      background: var(--main-blue);
-      color: #fff;
-      border: none;
-      font-weight: 800;
-      font-size: 1.15rem;
-      padding: 0 34px;
-      border-radius: 0 12px 12px 0;
-      cursor: pointer;
-      transition: background 0.16s;
-    }
-    .search-btn:hover {
-      background: var(--main-blue-hover);
-    }
-    .icon {
-      font-size: 1.2em;
-      opacity: 0.7;
-    }
-
-    .programs-section {
-      max-width: 1160px;
-      margin: 54px auto 0 auto;
-      padding: 0 18px;
-    }
-    .programs-title {
-      font-size: 2.1rem;
-      color: var(--main-blue);
-      font-weight: 800;
-      margin-bottom: 26px;
-    }
-    .program-list {
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
+    .grid {
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
     }
     .program-card {
-      background: var(--gray-bg);
+      background: #fff;
       border-radius: 16px;
-      box-shadow: 0 2px 14px rgba(0,40,100,0.07);
-      padding: 22px 18px 18px 18px;
-      max-width: 310px;
-      min-width: 220px;
-      flex: 1 1 220px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      padding: 2rem 1.2rem 1.3rem 1.2rem;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      height: 100%;
+      transition: box-shadow 0.22s;
+    }
+    .program-card:hover {
+      box-shadow: 0 6px 32px rgba(0,0,0,0.10);
     }
     .program-card-title {
+      margin: 0.7rem 0 0.35rem 0;
       font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--main-blue);
-      margin-bottom: 7px;
     }
     .program-card-desc {
-      color: #3a3a3a;
       flex: 1;
-      font-size: 1rem;
-    }
-    .program-card-btn {
-      align-self: flex-end;
-      background: var(--main-blue);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 7px 18px;
-      font-weight: 700;
-      font-size: 1rem;
-      margin-top: 10px;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-    .program-card-btn:hover {
-      background: var(--main-blue-hover);
-    }
-
-    /* ==== Соцсети ===== */
-    .footer-socials {
-      margin: 24px 0 10px 0;
-      display: flex;
-      justify-content: center;
-      gap: 22px;
-    }
-    .social-btn {
-      border: none;
-      padding: 0 25px;
-      height: 42px;
-      border-radius: 8px;
-      font-size: 1.05rem;
-      font-weight: bold;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      transition: background 0.18s, box-shadow 0.15s;
-      box-shadow: 0 2px 8px rgba(0,40,100,0.09);
-      outline: none;
-      text-decoration: none;
-    }
-    .social-btn.ok {
-      background: var(--ok-orange);
-    }
-    .social-btn.ok:hover {
-      background: var(--ok-orange-hover);
-    }
-    .social-btn.vk {
-      background: var(--vk-blue);
-    }
-    .social-btn.vk:hover {
-      background: #1769aa;
-    }
-
-    footer {
-      background: #f5f5f5;
-      color: #6a6a6a;
-      padding: 40px 0 20px 0;
-      text-align: center;
-      font-size: 1rem;
-      margin-top: 50px;
-    }
-    @media (max-width: 880px) {
-      .banner-content { flex-direction: column; gap: 18px; }
-      .banner-img { max-width: 90vw; }
+      color: #444;
+      margin-bottom: 1.3rem;
     }
     @media (max-width: 600px) {
-      .header-content, .banner-content, .programs-section { padding: 0 5vw; }
-      .main-banner { min-height: 260px; }
-      .banner-title { font-size: 2rem; }
-      .search-form { flex-direction: column; margin-top: -18px; }
-      .search-field, .search-btn { width: 100%; border-radius: 0; padding: 12px 14px; }
-      .search-btn { border-radius: 0 0 12px 12px; margin: 0; }
-      .program-list { flex-direction: column; gap: 18px; }
-      .program-card { max-width: 100%; min-width: unset; }
-      .footer-socials { flex-direction: column; gap: 14px; }
-      .social-btn { justify-content: center; }
+      nav strong { font-size: 1.1rem; }
+      .banner-img { max-height: 170px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <div class="logo">TravelBooking</div>
-      <nav class="nav-links">
-        <a href="#">Жильё</a>
-        <a href="#">Туры</a>
-        <a href="#">Авиабилеты</a>
-        <a href="#">Контакты</a>
-      </nav>
-      <div class="header-btns">
-        <button class="btn">Зарегистрироваться</button>
-        <button class="btn primary">Войти</button>
-      </div>
-    </div>
-  </header>
-  <section class="main-banner">
-    <div class="banner-content">
-      <div class="banner-text">
-        <div class="banner-title">Бронируйте туры и жильё<br>— легко и удобно</div>
-        <div class="banner-desc">Путешествуйте без забот: выбирайте авторские программы, ищите жильё и бронируйте за пару минут.</div>
-      </div>
-      <img class="banner-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" alt="Пляж">
-    </div>
-  </section>
-  <form class="search-form">
-    <div class="search-field">
-      <span class="icon">🏨</span>
-      <input type="text" placeholder="Куда вы хотите поехать?" style="border:none;outline:none;font-size:1.1rem;width:100%">
-    </div>
-    <div class="search-field">
-      <span class="icon">📅</span>
-      <input type="text" placeholder="Дата заезда — дата отъезда" style="border:none;outline:none;font-size:1.1rem;width:100%">
-    </div>
-    <div class="search-field">
-      <span class="icon">👤</span>
-      <input type="text" placeholder="2 взрослых, 0 детей" style="border:none;outline:none;font-size:1.1rem;width:100%">
-    </div>
-    <button class="search-btn" type="submit">Найти</button>
-  </form>
+  <nav class="container-fluid">
+    <ul>
+      <li>
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=facearea&w=80&h=80&facepad=2" alt="Логотип" class="logo-img" />
+        <strong>Туры с Ирен</strong>
+      </li>
+    </ul>
+    <ul>
+      <li><a href="#">Программы</a></li>
+      <li><a href="#">Жильё</a></li>
+      <li><a href="#" role="button">Контакты</a></li>
+    </ul>
+  </nav>
 
-  <section class="programs-section">
-    <div class="programs-title">Спецпредложения туров</div>
-    <div class="program-list">
-      <div class="program-card">
-        <div class="program-card-title">Тур по Лангедоку</div>
-        <div class="program-card-desc">3 дня среди виноградников, дегустации, прогулки и уютные вечера. Старт — Монпелье, проживание в замке.</div>
-        <button class="program-card-btn">Подробнее</button>
-      </div>
-      <div class="program-card">
-        <div class="program-card-title">Путешествие по Пиренеям</div>
-        <div class="program-card-desc">Горные маршруты, озёра, йога на рассвете и пикники с местными сырами. Все уровни подготовки.</div>
-        <button class="program-card-btn">Подробнее</button>
-      </div>
-      <div class="program-card">
-        <div class="program-card-title">Weekend на море</div>
-        <div class="program-card-desc">2 дня на лучших пляжах Франции, экскурсии и прогулки на яхте. Проживание — апартаменты на берегу.</div>
-        <button class="program-card-btn">Подробнее</button>
-      </div>
+  <main class="container">
+    <div class="grid">
+      <section>
+        <hgroup>
+          <h2>Путешествуйте по Лангедоку</h2>
+          <h3>Вино, устрицы, природа Франции — с заботой и атмосферой</h3>
+        </hgroup>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=900&q=80" alt="Виноградники Лангедока" class="banner-img" />
+          <figcaption>
+            <a href="https://unsplash.com/photos/1519125323398-675f0ddb6308" target="_blank">Фото Unsplash</a>
+          </figcaption>
+        </figure>
+        <h3>Откройте новые маршруты</h3>
+        <p>
+          Классические и авторские туры, гастрономия, винные маршруты, невероятные панорамы — всё это ждёт вас на юге Франции.
+        </p>
+        <h3>С заботой о вашем отдыхе</h3>
+        <p>
+          Мы подбираем уютное жильё, проводим трансферы и сопровождаем на всём пути. Гиды говорят на русском и французском.
+        </p>
+      </section>
+    </div>
+
+    <div class="grid">
+      <section>
+        <hgroup>
+          <h2>Популярные туры</h2>
+          <h3>Для вдохновения и отдыха</h3>
+        </hgroup>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2.2rem;">
+          <article class="program-card">
+            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=500&q=80" alt="Виноградники и замок" class="program-card-img" />
+            <div class="program-card-title">Тур по Лангедоку</div>
+            <div class="program-card-desc">3 дня среди виноградников, дегустации, прогулки и уютные вечера. Старт — Монпелье, проживание в замке.</div>
+            <button>Подробнее</button>
+          </article>
+          <article class="program-card">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="Пиренеи, Франция" class="program-card-img" />
+            <div class="program-card-title">Путешествие по Пиренеям</div>
+            <div class="program-card-desc">Горные маршруты, озёра, йога на рассвете и пикники с местными сырами. Все уровни подготовки.</div>
+            <button>Подробнее</button>
+          </article>
+          <article class="program-card">
+            <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=500&q=80" alt="Пляж, Франция" class="program-card-img" />
+            <div class="program-card-title">Weekend на море</div>
+            <div class="program-card-desc">2 дня на лучших пляжах Франции, экскурсии и прогулки на яхте. Проживание — апартаменты на берегу.</div>
+            <button>Подробнее</button>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section aria-label="Subscribe example">
+    <div class="container">
+      <article>
+        <hgroup>
+          <h2>Подпишитесь на новости и анонсы туров</h2>
+          <h3>Никакого спама. Только полезные подборки и специальные предложения</h3>
+        </hgroup>
+        <form class="grid">
+          <input type="text" id="firstname" name="firstname" placeholder="Имя" aria-label="Имя" required />
+          <input type="email" id="email" name="email" placeholder="Email" aria-label="Email" required />
+          <button type="submit" onclick="event.preventDefault()">Подписаться</button>
+        </form>
+      </article>
     </div>
   </section>
-  <footer>
-    <div class="footer-socials">
-      <a class="social-btn ok" href="#" target="_blank" title="Одноклассники">
-        <span style="font-size:1.3em;">🟧</span>
-        Одноклассники
-      </a>
-      <a class="social-btn vk" href="#" target="_blank" title="ВКонтакте">
-        <span style="font-size:1.3em;">🟦</span>
-        ВКонтакте
-      </a>
-    </div>
-    &copy; 2025 TravelBooking. Все права защищены.<br>
-    <span style="color:#003b95">Email: info@travelbooking.ru</span>
+
+  <footer class="container">
+    <small>
+      <a href="#">Instagram</a> • <a href="#">Telegram</a> • <a href="#">VK</a>
+    </small>
   </footer>
 </body>
 </html>
-  
