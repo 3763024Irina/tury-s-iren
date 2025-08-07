@@ -13,7 +13,7 @@ header, footer {
   padding: 1rem 2rem;
 }
 .logo img {
-  height: 100px;
+  height: 60px;
   max-width: 220px;
   object-fit: contain;
   display: block;
