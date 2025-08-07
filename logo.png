@@ -1,1 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Туры с Ирен — Лангедок-Руссильон</title>
+  <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Spectral:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: #0D2B1E;
+      --accent: #C9B886;
+      --light-bg: #f5f5f5;
+    }
+    body {
+      font-family: 'Spectral', serif;
+      background: var(--light-bg);
+      color: #222;
+    }
+    nav, header {
+      background: var(--main-bg);
+      color: #fff;
+    }
+    nav strong {
+      color: var(--accent);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+    }
+    .logo-img {
+      background: #0d2b1e;
+      border-radius: 14px;
+      margin-right: 18px;
+      height: 58px;
+      width: auto;
+      box-shadow: 0 4px 22px rgba(0,0,0,0.07);
+      padding: 0;
+      object-fit: contain;
+    }
+    .lang-switch {
+      margin-right: 15px;
+      font-size: 1.09rem;
+      font-family: 'Spectral', serif;
+      color: var(--accent);
+    }
+    .social-icons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-left: 18px;
+    }
+    .social-icons a {
+      color: var(--accent);
+      background: transparent;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px; height: 34px;
+      font-size: 1.15rem;
+      border: 1px solid var(--accent);
+      transition: background 0.16s, color 0.16s;
+    }
+    .social-icons a:hover {
+      background: var(--accent);
+      color: var(--main-bg);
+      border-color: var(--main-bg);
+    }
+    main.container {
+      background: transparent;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .gallery-scroll {
+      overflow-x: auto;
+      display: flex;
+      gap: 18px;
+      padding: 28px 0 16px 0;
+      scroll-snap-type: x mandatory;
+    }
+    .gallery-item {
+      flex: 0 0 220px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(15,20,40,0.06);
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      transition: box-shadow 0.18s, border 0.18s;
+      border: 1px solid #ece8dd;
+    }
+    .gallery-item:hover {
+      box-shadow: 0 6px 26px rgba(20,35,70,0.11);
+      border: 1px solid var(--accent);
+    }
+    .gallery-photo {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .gallery-caption {
+      font-size: 1.08rem;
+      text-align: center;
+      color: var(--main-bg);
+      font-family: 'Cormorant Garamond', serif;
+      margin-bottom: 1px;
+    }
+    .gallery-caption-fr {
+      font-size: 0.96rem;
+      color: #9d9077;
+    }
+    .grid {
+      gap: 2.4rem;
+      margin-bottom: 2.2rem;
+    }
+    .program-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+      padding: 1.4rem 1.1rem 1.1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border: 1px solid #ece8dd;
+      transition: box-shadow 0.16s, border 0.16s;
+    }
+    .program-card:hover {
+      box-shadow: 0 5px 28px rgba(0,0,0,0.09);
+      border: 1px solid var(--accent);
+    }
+    .program-card img {
+      border-radius: 12px;
+      width: 100%;
+      max-height: 135px;
+      object-fit: cover;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 2px 16px rgba(50,40,20,0.07);
+    }
+    .program-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--main-bg);
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .program-card-title-fr {
+      color: #a19377;
+      font-size: 0.97rem;
+      margin-bottom: 0.53rem;
+      font-family: 'Spectral', serif;
+    }
+    .program-card-desc {
+      color: #393838;
+      font-size: 1.01rem;
+      margin-bottom: 0.6rem;
+      flex: 1;
+    }
+    .program-card-desc-fr {
+      color: #90836d;
+      font-size: 0.93rem;
+      margin-bottom: 0.8rem;
+    }
+    section[aria-label] {
+      background: #fff;
+      border-radius: 16px;
+      margin: 38px auto 0 auto;
+      box-shadow: 0 2px 16px rgba(80,70,20,0.07);
+      padding: 32px 0 18px 0;
+      border: 1px solid #ece8dd;
+      max-width: 850px;
+    }
+    form input, form button {
+      background: var(--light-bg);
+      border-radius: 7px;
+      border: 1px solid #e4e2db;
+    }
+    form button {
+      background: var(--main-bg);
+      color: var(--accent);
+      font-weight: 600;
+      border: none;
+      transition: background 0.17s, color 0.17s;
+    }
+    form button:hover {
+      background: var(--accent);
+      color: var(--main-bg);
+    }
+    footer.container {
+      margin-top: 38px;
+      background: transparent;
+      color: var(--main-bg);
+      text-align: center;
+      font-size: 1rem;
+    }
+    footer a {
+      color: var(--main-bg);
+      margin: 0 9px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.15s;
+    }
+    footer a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    footer small {
+      color: var(--accent);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+    }
+    @media (max-width: 700px) {
+      .logo-img { height: 44px; }
+      .gallery-photo { height: 74px; }
+      .gallery-item { flex-basis: 120px; }
+      .gallery-caption, .gallery-caption-fr { font-size: 0.92rem; }
+      .program-card img { max-height: 72px; }
+      .program-card-title { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="container-fluid">
+    <ul>
+      <li style="display: flex; align-items: center;">
+        <img src="logo.png" alt="Логотип" class="logo-img" />
+        <strong>Туры с Ирен</strong>
+      </li>
+    </ul>
+    <ul style="gap: 5px; align-items:center;">
+      <li class="lang-switch"><a href="#" onclick="switchLang('ru')" id="ruBtn">🇷🇺 Рус</a> | <a href="#" onclick="switchLang('fr')" id="frBtn">🇫🇷 Fr</a></li>
+      <li class="social-icons">
+        <a href="https://t.me/" target="_blank" title="Telegram">Т</a>
+        <a href="https://wa.me/" target="_blank" title="WhatsApp">W</a>
+        <a href="https://instagram.com/" target="_blank" title="Instagram">I</a>
+        <a href="https://facebook.com/" target="_blank" title="Facebook">F</a>
+      </li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <div style="margin-top:20px;">
+      <strong style="font-family:'Cormorant Garamond',serif;font-size:1.13rem;color:var(--main-bg);">Популярные туры по Эро, Лангедоку и Руссильону</strong><br>
+      <span style="color:#a19377;font-size:0.95rem;">Tours populaires en Hérault, Languedoc et Roussillon</span>
+    </div>
+    <div class="gallery-scroll">
+      <div class="gallery-item">
+        <img class="gallery-photo" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=500&q=80" alt="Винный уикенд"/>
+        <div class="gallery-caption">Винный уикенд в Лангедоке</div>
+        <div class="gallery-caption-fr">Week-end viticole en Languedoc</div>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-photo" src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=500&q=80" alt="Средневековые города"/>
+        <div class="gallery-caption">Средневековые города и замки</div>
+        <div class="gallery-caption-fr">Villes et châteaux médiévaux</div>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-photo" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="Пляжи Сета"/>
+        <div class="gallery-caption">Морской релакс: пляжи и устрицы Сета</div>
+        <div class="gallery-caption-fr">Plages et fermes ostréicoles de Sète</div>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-photo" src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=500&q=80" alt="Галереи Монпелье"/>
+        <div class="gallery-caption">Арт-тур по галереям Монпелье</div>
+        <div class="gallery-caption-fr">Circuit artistique à Montpellier</div>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-photo" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=500&q=80" alt="Йога в Орбе"/>
+        <div class="gallery-caption">Йога и трекинг в Долине Орба</div>
+        <div class="gallery-caption-fr">Yoga et randonnée dans la vallée de l’Orb</div>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-photo" src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=500&q=80" alt="Озёра Салаго"/>
+        <div class="gallery-caption">Семейное путешествие по озёрам Салаго</div>
+        <div class="gallery-caption-fr">Séjour familial aux lacs du Salagou</div>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-photo" src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=500&q=80" alt="Гастро-тур Пезенас"/>
+        <div class="gallery-caption">Гастро-тур: вина, сыры и Пезенас</div>
+        <div class="gallery-caption-fr">Circuit gourmand : vins, fromages et Pézenas</div>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-photo" src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=500&q=80" alt="Сент-Жильем"/>
+        <div class="gallery-caption">Дорога в Сент-Жильем-ле-Дезер</div>
+        <div class="gallery-caption-fr">Route vers Saint-Guilhem-le-Désert</div>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-photo" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=500&q=80" alt="Пиренеи"/>
+        <div class="gallery-caption">Пиренеи: походы и йога на рассвете</div>
+        <div class="gallery-caption-fr">Pyrénées : randonnées et yoga au lever du soleil</div>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-photo" src="https://images.unsplash.com/photo-1519121782843-c9e1edac8b06?auto=format&fit=crop&w=500&q=80" alt="Канал дю Миди"/>
+        <div class="gallery-caption">Weekend на Канале дю Миди</div>
+        <div class="gallery-caption-fr">Week-end sur le Canal du Midi</div>
+      </div>
+    </div>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem;">
+      <article class="program-card">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=500&q=80" alt="Винный уикенд" />
+        <div class="program-card-title">Винный уикенд в Лангедоке</div>
+        <div class="program-card-title-fr">Week-end viticole en Languedoc</div>
+        <div class="program-card-desc">3 дня среди виноградников, лучшие вина региона, дегустации, прогулки и уютные вечера в замке.</div>
+        <div class="program-card-desc-fr">3 jours parmi les vignobles, dégustations, balades et soirées dans un château.</div>
+        <button>Подробнее</button>
+      </article>
+      <article class="program-card">
+        <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=500&q=80" alt="Средневековые города" />
+        <div class="program-card-title">Средневековые города и замки</div>
+        <div class="program-card-title-fr">Villes et châteaux médiévaux</div>
+        <div class="program-card-desc">Экскурсии по крепостям, старинным городам и дворцам Лангедока с русским гидом.</div>
+        <div class="program-card-desc-fr">Visites guidées des cités fortifiées, châteaux et palais du Languedoc.</div>
+        <button>Подробнее</button>
+      </article>
+      <article class="program-card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="Пляжи Сета" />
+        <div class="program-card-title">Морской релакс: пляжи и устрицы Сета</div>
+        <div class="program-card-title-fr">Plages et fermes ostréicoles de Sète</div>
+        <div class="program-card-desc">Лучшие пляжи Средиземноморья, прогулки на яхте, свежие устрицы и морские деликатесы.</div>
+        <div class="program-card-desc-fr">Plages de Méditerranée, balades en yacht, huîtres fraîches et fruits de mer.</div>
+        <button>Подробнее</button>
+      </article>
+      <article class="program-card">
+        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=500&q=80" alt="Галереи Монпелье" />
+       
+
 
