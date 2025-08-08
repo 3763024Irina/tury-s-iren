@@ -9,136 +9,36 @@
   <meta name="color-scheme" content="light dark" />
   <style>
     :root {
-      --main-bg: #0D2B1E;
-      --accent: #C9B886;
-      --glass: rgba(255,255,255,.08);
-      --glass-border: rgba(255,255,255,.18);
+      --main-bg:#0D2B1E; --accent:#C9B886;
+      --glass: rgba(255,255,255,.08); --glass-border: rgba(255,255,255,.18);
       --shadow: rgba(0,0,0,.35);
     }
-    * { box-sizing: border-box; }
     html, body { height: 100%; margin: 0; }
-    body {
-      font-family: 'Spectral', serif;
-      color: #fff;
-      text-align: center;
-      overflow: hidden;
-      background: #0b1f18;
-    }
-
-    /* Фон с градиентом */
-    .bg {
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(60% 60% at 50% 30%, rgba(13,43,30,.4) 0%, rgba(13,43,30,.72) 100%),
-        linear-gradient(180deg, rgba(13,43,30,.45), rgba(13,43,30,.75)),
-        url('bg.jpg') center/cover no-repeat;
-      filter: saturate(1.05);
-      animation: zoom 20s ease-in-out infinite alternate;
-    }
-
-    @keyframes zoom {
-      from { transform: scale(1); }
-      to   { transform: scale(1.05); }
-    }
-
-    /* Центрированный контейнер */
-    .wrap {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      animation: fadein .6s ease-out;
-    }
-
-    /* Карточка */
-    .card {
-      width: min(720px, 94vw);
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px);
-      border-radius: 22px;
-      padding: 28px 24px 22px;
-      box-shadow: 0 24px 70px var(--shadow);
-    }
-
-    /* Логотип и название */
-    .brand {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    .brand img {
-      height: 64px;
-      border-radius: 12px;
-      background: #fff;
-      box-shadow: 0 2px 12px rgba(0,0,0,.2);
-    }
-    .brand strong {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(26px, 4.5vw, 36px);
-      color: var(--accent);
-    }
-
-    h1 {
-      margin: 6px 0 2px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(24px, 4.5vw, 40px);
-      text-shadow: 0 2px 8px rgba(0,0,0,.35);
-    }
-    .lead {
-      margin: 2px 0 18px;
-      opacity: .92;
-      font-size: clamp(15px, 2.3vw, 18px);
-    }
-
-    /* Кнопки выбора */
-    .buttons {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 20px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.35);
-      background: #ffffff12;
-      color: #fff;
-      font-weight: 700;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background .2s ease, transform .12s ease;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      background: #ffffff20;
-    }
-
-    .flag { font-size: 20px; }
-    .hint { margin-top: 14px; opacity: .8; font-size: 13px; }
-    .footer {
-      position: fixed;
-      left: 0; right: 0; bottom: 10px;
-      text-align: center;
-      z-index: 2;
-      font-size: 13px;
-      opacity: .8;
-    }
-
-    @keyframes fadein { from { opacity: 0 } to { opacity: 1 } }
+    body { font-family:'Spectral',serif; color:#fff; text-align:center; background:#0b1f18; }
+    .bg{position:fixed;inset:0;background:
+      radial-gradient(60% 60% at 50% 30%, rgba(13,43,30,.4) 0%, rgba(13,43,30,.72) 100%),
+      linear-gradient(180deg, rgba(13,43,30,.45), rgba(13,43,30,.75)),
+      url('bg.jpg') center/cover no-repeat; animation:zoom 20s ease-in-out infinite alternate;}
+    @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.05)}}
+    .wrap{position:relative;z-index:2;height:100%;display:grid;place-items:center;padding:24px;}
+    .card{width:min(720px,94vw);background:var(--glass);border:1px solid var(--glass-border);
+      backdrop-filter:blur(10px);border-radius:22px;padding:28px 24px 22px;box-shadow:0 24px 70px var(--shadow);}
+    .brand{display:flex;gap:14px;justify-content:center;align-items:center;margin-bottom:8px;}
+    .brand img{height:64px;border-radius:12px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.2);}
+    .brand strong{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4.5vw,36px);color:var(--accent);}
+    h1{margin:6px 0 2px;font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4.5vw,40px);}
+    .lead{margin:2px 0 18px;opacity:.92;font-size:clamp(15px,2.3vw,18px);}
+    .buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.35);background:#ffffff12;color:#fff;font-weight:700;font-size:18px;
+      cursor:pointer;transition:background .2s ease, transform .12s ease;}
+    .btn:hover{transform:translateY(-2px);background:#ffffff20;}
+    .flag{font-size:20px}.hint{margin-top:14px;opacity:.8;font-size:13px}
+    .footer{position:fixed;left:0;right:0;bottom:10px;text-align:center;z-index:2;font-size:13px;opacity:.8}
   </style>
 </head>
 <body>
   <div class="bg" aria-hidden="true"></div>
-
   <div class="wrap">
     <div class="card" role="dialog" aria-labelledby="ttl" aria-describedby="dsc">
       <div class="brand">
@@ -151,31 +51,17 @@
         <button class="btn" onclick="choose('ru')"><span class="flag">🇷🇺</span><span>Русский</span></button>
         <button class="btn" onclick="choose('fr')"><span class="flag">🇫🇷</span><span>Français</span></button>
       </div>
-      <div class="hint">Нажмите Enter для русского по умолчанию</div>
+      <div class="hint">Enter = Русский по умолчанию</div>
     </div>
   </div>
-
   <div class="footer">© 2025 Туры с Ирен</div>
 
   <script>
-    const HOME = 'home.html';
-
-    // Если язык уже выбран — сразу на сайт
-    const savedLang = localStorage.getItem('lang');
-    if (savedLang) go();
-
-    // Enter = русский
-    window.addEventListener('keydown', e => {
-      if (e.key === 'Enter') choose('ru');
-    });
-
-    function choose(lang) {
-      localStorage.setItem('lang', lang);
-      go();
-    }
-    function go() {
-      location.href = HOME;
-    }
+    const HOME='home.html';
+    const saved=localStorage.getItem('lang'); if(saved) go();
+    window.addEventListener('keydown',e=>{ if(e.key==='Enter') choose('ru'); });
+    function choose(lang){ localStorage.setItem('lang',lang); go(); }
+    function go(){ location.href=HOME; }
   </script>
 </body>
 </html>
