@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+<script>
+  // Проверка выбора языка
+  const lang = localStorage.getItem('lang');
+  if (!lang) {
+    window.location.href = 'index.html';
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    if (typeof switchLang === 'function') {
+      switchLang(lang);
+    }
+  });
+</script>
+
 <html lang="ru">
 <head>
   <link rel="stylesheet" href="style.css?v=3"><!-- версия для пробития кэша -->
@@ -204,8 +217,9 @@
   </div>
   <div class="nav-right">
     <span class="lang-switch">
-      <a href="#" onclick="switchLang('ru')" id="ruBtn">🇷🇺 Рус</a> | 
-      <a href="#" onclick="switchLang('fr')" id="frBtn">🇫🇷 Fr</a>
+  <a href="#" onclick="switchLang('ru'); localStorage.setItem('lang', 'ru');" id="ruBtn">🇷🇺 Рус</a> | 
+<a href="#" onclick="switchLang('fr'); localStorage.setItem('lang', 'fr');" id="frBtn">🇫🇷 Fr</a>
+
     </span>
     <span class="social-icons">
       <a href="https://t.me/" target="_blank" title="Telegram">Т</a>
