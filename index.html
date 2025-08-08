@@ -455,6 +455,7 @@
 <!-- ===== Скрипты ===== -->
 <script>
   function switchLang(lang) {
+    localStorage.setItem('lang', lang);
     document.querySelectorAll('.gallery-caption').forEach(e => e.style.display = lang==='ru' ? 'block':'none');
     document.querySelectorAll('.gallery-caption-fr').forEach(e => e.style.display = lang==='fr' ? 'block':'none');
     document.querySelectorAll('.program-card-title').forEach(e => e.style.display = lang==='ru' ? 'block':'none');
@@ -464,7 +465,7 @@
     document.getElementById('ruBtn').style.fontWeight = lang==='ru' ? 'bold' : 'normal';
     document.getElementById('frBtn').style.fontWeight = lang==='fr' ? 'bold' : 'normal';
   }
-  switchLang('ru');
+ switchLang(localStorage.getItem('lang') || 'ru');
 </script>
 
 <!-- Авто-месяц для блока дат -->
