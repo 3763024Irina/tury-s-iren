@@ -24,8 +24,6 @@
       overflow: hidden;
       background: #0b1f18;
     }
-
-    /* Фон: фото + градиент */
     .bg {
       position: fixed; inset: 0;
       background:
@@ -33,15 +31,11 @@
         linear-gradient(180deg, rgba(13,43,30,.45), rgba(13,43,30,.75)),
         url('bg.jpg') center/cover no-repeat;
       filter: saturate(1.05);
-      transform: scale(1.02);
-      will-change: transform;
     }
-
-    /* Центр */
     .wrap {
       position: relative; z-index: 2;
       height: 100%; display: grid; place-items: center; padding: 24px;
-      animation: fadein .6s ease-out both;
+      animation: fadein .4s ease-out;
     }
     .card {
       width: min(720px, 94vw);
@@ -52,123 +46,73 @@
       padding: 28px 24px 22px;
       box-shadow: 0 24px 70px var(--shadow);
     }
-
-    /* Бренд */
     .brand {
       display: flex; gap: 14px; justify-content: center; align-items: center;
       margin-bottom: 8px;
     }
     .brand img {
-      height: 64px; width: auto; object-fit: contain; border-radius: 12px;
-      background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.2);
+      height: 64px; border-radius: 12px; background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,.2);
     }
     .brand strong {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(26px, 4.5vw, 36px);
-      letter-spacing: .5px;
       color: var(--accent);
     }
-
     h1 {
       margin: 6px 0 2px;
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(24px, 4.5vw, 40px);
       text-shadow: 0 2px 8px rgba(0,0,0,.35);
-      animation: slideDown 700ms ease-out both;
     }
     .lead { margin: 2px 0 18px; opacity: .92; font-size: clamp(15px, 2.3vw, 18px); }
-
-    /* Кнопки языков */
-    .buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 6px; }
+    .buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: 10px;
       padding: 12px 20px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.35);
       background: #ffffff12;
-      color: #fff;
-      font-weight: 700;
-      font-size: 18px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform .12s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+      color: #fff; font-weight: 700; font-size: 18px;
+      cursor: pointer; transition: background .2s ease, transform .12s ease;
     }
-    .btn:hover { transform: translateY(-2px); background: #ffffff20; border-color: #ffffff66; box-shadow: 0 8px 22px rgba(0,0,0,.25); }
-    .btn:focus { outline: 2px solid #fff8; outline-offset: 3px; }
+    .btn:hover { transform: translateY(-2px); background: #ffffff20; }
     .flag { font-size: 20px; }
     .hint { margin-top: 14px; opacity: .8; font-size: 13px; }
-
     .footer { position: fixed; left: 0; right: 0; bottom: 10px; text-align: center; z-index: 2; font-size: 13px; opacity: .8; }
-
     @keyframes fadein { from { opacity: 0 } to { opacity: 1 } }
-    @keyframes slideDown { from { transform: translateY(-12px); opacity: 0 } to { transform: none; opacity: 1 } }
-
-    /* Уважение к accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      .wrap, h1 { animation: none; }
-      .btn { transition: none; }
-    }
-
-    /* Мобильная мелочь */
-    @media (max-width: 480px) {
-      .brand img { height: 56px; }
-    }
   </style>
 </head>
 <body>
   <div class="bg" aria-hidden="true"></div>
-
   <div class="wrap">
     <div class="card" role="dialog" aria-labelledby="ttl" aria-describedby="dsc">
       <div class="brand">
-        <!-- замените на ваш логотип; если нет — тег можно удалить -->
         <img src="logo.png" alt="Логотип" onerror="this.style.display='none'">
         <strong>Туры с Ирен</strong>
       </div>
-
       <h1 id="ttl">Выберите язык • Choisissez la langue</h1>
       <p id="dsc" class="lead">Мы запомним выбор и откроем сайт</p>
-
       <div class="buttons">
-        <button class="btn" onclick="choose('ru')" aria-label="Русский">
-          <span class="flag">🇷🇺</span><span>Русский</span>
-        </button>
-        <button class="btn" onclick="choose('fr')" aria-label="Français">
-          <span class="flag">🇫🇷</span><span>Français</span>
-        </button>
+        <button class="btn" onclick="choose('ru')"><span class="flag">🇷🇺</span><span>Русский</span></button>
+        <button class="btn" onclick="choose('fr')"><span class="flag">🇫🇷</span><span>Français</span></button>
       </div>
-
-      <div class="hint">Нажмите Enter для русского по умолчанию</div>
+      <div class="hint">Enter = Русский по умолчанию</div>
     </div>
   </div>
-
   <div class="footer">© 2025 Туры с Ирен</div>
 
   <script>
-    // Куда вести после выбора
     const HOME = 'home.html';
-
-    // Если язык уже выбран — сразу на сайт
-    (function () {
-      const saved = localStorage.getItem('lang');
-      if (saved) go();
-      // Клавиатурный Enter = RU по умолчанию
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') choose('ru');
-      });
-      // Поддержка ?lang=fr
-      const match = location.search.match(/lang=(ru|fr)/i);
-      if (match) choose(match[1].toLowerCase());
-    })();
-
+    const saved = localStorage.getItem('lang');
+    if (saved) go();
+    window.addEventListener('keydown', e => { if (e.key === 'Enter') choose('ru'); });
     function choose(lang) {
-      try { localStorage.setItem('lang', lang); } catch (e) {}
+      localStorage.setItem('lang', lang);
       go();
     }
     function go() {
-      // Переход на главную (в той же папке)
-      const base = location.pathname.replace(/[^\/]+$/, '');
-      location.href = base + HOME;
+      location.href = HOME;
     }
   </script>
 </body>
