@@ -1,0 +1,102 @@
+<!-- Кнопка чата -->
+<div id="chat-button">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="26" height="26">
+    <path d="M12 3C6.48 3 2 6.92 2 11.5c0 2.24 1.04 4.28 2.78 5.78L4 21l4.02-1.72C9.1 19.42 10.53 19.5 12 19.5c5.52 0 10-3.92 10-8S17.52 3 12 3z"/>
+  </svg>
+</div>
+
+<!-- Окно чата -->
+<div id="chat-window">
+  <div id="chat-header">Чат с Ирен ✨</div>
+  <div id="chat-body">
+    <div id="chat-messages"></div>
+    <input type="text" id="chat-input" placeholder="Напишите сообщение..." />
+  </div>
+</div>
+
+<style>
+  /* Кнопка чата */
+  #chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent, #C9B886);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform 0.2s;
+  }
+  #chat-button:hover {
+    transform: scale(1.08);
+  }
+
+  /* Окно чата */
+  #chat-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 280px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    font-family: Arial, sans-serif;
+    z-index: 9999;
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+  }
+  #chat-header {
+    background: var(--accent, #C9B886);
+    color: #0D2B1E;
+    padding: 10px;
+    font-weight: bold;
+  }
+  #chat-body {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+  }
+  #chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 14px;
+  }
+  #chat-input {
+    border: none;
+    border-top: 1px solid #ddd;
+    padding: 8px;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+  }
+</style>
+
+<script>
+  const chatButton = document.getElementById('chat-button');
+  const chatWindow = document.getElementById('chat-window');
+  const chatInput = document.getElementById('chat-input');
+  const chatMessages = document.getElementById('chat-messages');
+
+  // Показ / скрытие окна чата
+  chatButton.addEventListener('click', () => {
+    chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  // Отправка сообщений
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && chatInput.value.trim() !== '') {
+      const msg = document.createElement('div');
+      msg.textContent = 'Вы: ' + chatInput.value;
+      chatMessages.appendChild(msg);
+      chatInput.value = '';
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  });
+</script>
