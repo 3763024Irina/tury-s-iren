@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Туры с Ирен — Выбор языка</title>
+  <style>
+    :root {
+      --main-bg: #0D2B1E;
+      --accent: #C9B886;
+    }
+    body {
+      margin: 0;
+      height: 100vh;
+      background: url('bg.jpg') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Cormorant Garamond', serif;
+      color: white;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+      animation: slideDown 1.5s ease forwards;
+    }
+    .lang-buttons {
+      display: flex;
+      gap: 20px;
+      animation: fadeIn 2.5s ease-in;
+    }
+    .lang-btn {
+      padding: 12px 28px;
+      border: 2px solid var(--accent);
+      background: rgba(0,0,0,0.5);
+      color: var(--accent);
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .lang-btn:hover {
+      background: var(--accent);
+      color: var(--main-bg);
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes slideDown {
+      from {transform: translateY(-20px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Des voyages avec goût<br>Туры с Ирен</h1>
+  <div class="lang-buttons">
+    <button class="lang-btn" onclick="selectLang('ru')">Русский</button>
+    <button class="lang-btn" onclick="selectLang('fr')">Français</button>
+  </div>
+
+  <script>
+    // Если язык уже выбран — пропускаем заставку
+    if(localStorage.getItem('lang')) {
+      window.location.href = 'home.html'; // основная страница
+    }
+
+    function selectLang(lang) {
+      localStorage.setItem('lang', lang);
+      window.location.href = 'home.html'; // основная страница
+    }
+  </script>
+
+</body>
+</html>
