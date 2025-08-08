@@ -167,8 +167,34 @@
     </span>
   </div>
 </nav>
-
-
+<section id="benefits" class="section">
+  <div class="container">
+    <h2 class="section-title">Почему с нами</h2>
+    <p class="section-subtitle">Des voyages avec goût — авторские маршруты Лангедока</p>
+    <div class="features-grid">
+      <div class="feature-item"><div class="feature-ico">🥂</div><h3>Аутентичные винопробования</h3></div>
+      <div class="feature-item"><div class="feature-ico">🏰</div><h3>История и замки</h3></div>
+      <div class="feature-item"><div class="feature-ico">🌊</div><h3>Секретные локации</h3></div>
+      <div class="feature-item"><div class="feature-ico">🚐</div><h3>Комфорт и трансфер</h3></div>
+    </div>
+  </div>
+</section>
+<section id="schedule" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Ближайшие даты</h2>
+    <p class="section-subtitle">Calendrier des prochains départs</p>
+    <div class="dates-grid">
+      <article class="tour-card">
+        <div class="tour-date"><span class="day">17</span><span class="mon">Авг</span></div>
+        <div class="tour-info"><h3>Винный уикенд в Лангедоке</h3></div>
+      </article>
+      <article class="tour-card">
+        <div class="tour-date"><span class="day">24</span><span class="mon">Авг</span></div>
+        <div class="tour-info"><h3>Средневековые города и замки</h3></div>
+      </article>
+    </div>
+  </div>
+</section>
 
   <main class="container">
     <div style="margin-top:20px;"><strong style="font-family:'Cormorant Garamond',serif;font-size:1.18rem;">Популярные туры по Эро, Лангедоку и Руссильону</strong><br>
@@ -325,7 +351,16 @@
       </article>
     </div>
   </section>
-
+<section id="contacts" class="section">
+  <div class="container">
+    <h2 class="section-title">Контакты</h2>
+    <p class="section-subtitle">Nous écrire / Связаться с нами</p>
+    <ul>
+      <li><strong>Телефон:</strong> <a href="tel:+33700000000">+33 7 00 00 00 00</a></li>
+      <li><strong>Email:</strong> <a href="mailto:hello@languedoc-tours.com">hello@languedoc-tours.com</a></li>
+    </ul>
+  </div>
+</section>
   <footer class="container">
     <small>
       <a href="https://instagram.com/" target="_blank">Instagram</a> •
@@ -350,6 +385,24 @@
     }
     switchLang('ru');
   </script>
+  <script>
+(function () {
+  const months = ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
+  document.querySelectorAll('#schedule .tour-date .mon').forEach(el=>{
+    el.textContent = months[new Date().getMonth()];
+  });
+})();
+</script>
+
+<!-- Подключение чата -->
+<script>
+  fetch('chat-widget.html')
+    .then(r => r.text())
+    .then(html => document.body.insertAdjacentHTML('beforeend', html));
+</script>
+
+</body>
+
 </body>
 </html>
 
