@@ -13,12 +13,13 @@
 }
 
 .logo-img {
-  height: 120px;        /* Основная высота лого */
+  height: 120px; /* Основная высота лого */
   width: auto;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(10,30,20,0.07);
+  box-shadow: 0 2px 12px rgba(10, 30, 20, 0.07);
   object-fit: contain;
   display: block;
+  image-rendering: -webkit-optimize-contrast; /* лучше для Retina */
 }
 
 .nav-left strong {
@@ -26,6 +27,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 2rem;
   letter-spacing: 1px;
+  line-height: 1.2;
 }
 
 .nav-right {
@@ -39,24 +41,29 @@
   margin-right: 10px;
 }
 
+.social-icons {
+  display: flex;
+  gap: 6px;
+}
+
 .social-icons a {
   color: #0D2B1E;
   background: #fff;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #e4e4e4;
   font-size: 1.15rem;
-  transition: background 0.16s;
-  margin-left: 2px;
+  transition: background 0.16s, color 0.16s, transform 0.12s;
 }
 
 .social-icons a:hover {
   background: #C9B886;
   color: #fff;
+  transform: translateY(-2px);
 }
 
 /* --- Мобильная адаптация --- */
@@ -65,11 +72,19 @@
     flex-direction: column;
     gap: 14px;
     padding: 14px 8px;
+    text-align: center;
   }
+
   .logo-img {
     height: 78px; /* уменьшаем лого на мобилках */
   }
+
   .nav-left strong {
-    font-size: 1.2rem; /* уменьшаем шрифт названия */
+    font-size: 1.3rem; /* чуть больше, чем было */
+  }
+
+  .nav-right {
+    flex-direction: column;
+    gap: 8px;
   }
 }
