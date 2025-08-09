@@ -1,3 +1,65 @@
+/* Лёгкая «лента» под секцией */
+.section--band{
+  background: linear-gradient(180deg,#f7f5f1 0%, #fbfaf6 100%);
+  padding: 72px 0;
+}
+
+/* Заголовок блока */
+.section-head{ margin-bottom: 18px; }
+.section-title{ font-family:'Cormorant Garamond',serif; font-size: clamp(28px,4vw,44px); color:#0D2B1E; margin:0 0 6px; }
+.section-subtitle{ color:#7a7a7a; font-style: italic; margin:0; }
+
+/* Сетка преимуществ */
+.features{
+  display:grid; gap:22px;
+  grid-template-columns: repeat(12,1fr);
+  align-items: stretch;
+}
+.feature-card{
+  grid-column: span 3;
+  background:#fff; border:1px solid #eee;
+  border-radius:18px; padding:22px;
+  box-shadow: 0 8px 26px rgba(0,0,0,.05);
+  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.feature-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0,0,0,.08);
+  border-color:#e8e2d6;
+}
+.feature-ico{
+  width:58px; height:58px; border-radius:50%;
+  display:grid; place-items:center; font-size:28px;
+  background:#EFEAE2; color:#0D2B1E; margin-bottom:10px;
+}
+.feature-title{
+  margin:4px 0 6px;
+  font-size: clamp(16px,2vw,20px);
+  color:#0D2B1E; font-weight:800;
+}
+.feature-text{ margin:0; color:#565656; line-height:1.45; }
+
+/* Кнопка под карточками */
+.features-cta{
+  margin-top: 18px; display:flex; justify-content:center;
+}
+.btn-accent{
+  display:inline-block; padding:12px 18px; border-radius:12px;
+  background:#C9B886; color:#0D2B1E; font-weight:700; text-decoration:none;
+  border:1px solid #bfae7a; transition: transform .12s ease, filter .2s ease;
+}
+.btn-accent:hover{ transform:translateY(-2px); filter:brightness(1.05); }
+
+/* Адаптив */
+@media (max-width: 1024px){
+  .feature-card{ grid-column: span 6; }
+}
+@media (max-width: 560px){
+  .section--band{ padding: 54px 0; }
+  .feature-card{ grid-column: span 12; }
+  .feature-ico{ width:52px; height:52px; font-size:26px; }
+}
+
 .header-nav {
   display: flex;
   justify-content: space-between;
