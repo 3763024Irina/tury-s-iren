@@ -193,4 +193,33 @@
   .why-text strong{ font-size:15px; }
   .why-text span{ font-size:13.5px; }
 }
+/* --- Почему с нами — карточки с фото --- */
+.feat-wrap{padding:64px 0;background:#faf8f3}
+.feat-h2{margin:0 0 6px;color:#0D2B1E;font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,42px)}
+.feat-sub{margin:0 0 22px;color:#78746b;font-style:italic}
+
+.feat-grid{
+  display:grid; gap:18px;
+  grid-template-columns: repeat(12,1fr);
+}
+.feat-card{
+  grid-column: span 6;
+  background:#fff; border:1px solid #eee; border-radius:16px; overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,.05);
+  transition:transform .12s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.feat-card:hover{ transform:translateY(-3px); box-shadow:0 14px 28px rgba(0,0,0,.08); border-color:#e6decf; }
+.feat-img{
+  width:100%; aspect-ratio: 16/9; object-fit:cover; display:block;
+}
+.feat-body{ padding:14px 16px 16px; }
+.feat-title{ margin:0 0 6px; color:#17382b; font-size:clamp(16px,2.5vw,20px); font-weight:800; }
+.feat-desc{ margin:0; color:#575f58; line-height:1.45; }
+
+/* адаптив */
+@media (max-width: 900px){ .feat-card{ grid-column: span 12; } }
+@media (max-width: 560px){
+  .feat-wrap{ padding:44px 0; }
+  .feat-img{ aspect-ratio: 4/3; }
+}
 
