@@ -413,11 +413,62 @@
       // html lang
       document.documentElement.lang = isRU ? 'ru' : 'fr';
     }
+<script>
+  // Простой глобальный переключатель RU/FR
+  (function () {
+    const DEFAULT = 'ru';
+
+    function apply(lang) {
+      // показать выбранный, скрыть второй
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+      });
+      // активная кнопка
+      const ru = document.getElementById('ruBtn');
+      const fr = document.getElementById('frBtn');
+      if (ru && fr) {
+        ru.style.fontWeight = lang === 'ru' ? '700' : '400';
+        fr.style.fontWeight = lang === 'fr' ? '700' : '400';
+      }
+      // lang атрибут на html
+      document.documentElement.setAttribute('lang', lang);
+      // сохранить выбор
+      try { localStorage.setItem('lang', lang); } catch(e){}
+    }
+
+    // доступно глобально
+    window.switchLang = function (lang) { apply(lang); };
+
+    // инициализация при загрузке
+    const saved = localStorage.getItem('lang') || DEFAULT;
+    apply(saved);
+
+    // если есть кнопки в шапке — навесим
+    const ru = document.getElementById('ruBtn');
+    const fr = document.getElementById('frBtn');
+    if (ru) ru.addEventListener('click', e => { e.preventDefault(); apply('ru'); });
+    if (fr) fr.addEventListener('click', e => { e.preventDefault(); apply('fr'); });
+  })();
+</script>
 
     function setLang(lang){
       localStorage.setItem('lang',lang);
       applyLang(lang);
     }
+<h2>
+  <span data-lang="ru">Почему с нами</span>
+  <span data-lang="fr">Pourquoi nous choisir</span>
+</h2>
+
+<p class="muted">
+  <span data-lang="ru">Des voyages avec goût — авторские маршруты Лангедока</span>
+  <span data-lang="fr">Des voyages avec goût — itinéraires d’auteur en Languedoc</span>
+</p>
+
+<button>
+  <span data-lang="ru">Подробнее</span>
+  <span data-lang="fr">En savoir plus</span>
+</button>
 
     // init
     const lang = localStorage.getItem('lang') || 'ru';
